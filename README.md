@@ -1,5 +1,5 @@
-# School Attendance System
-This is a 10-part code-along project to build a console-based school attendance system in Java.
+# School Attendance System:
+This is a 10-part code-along project to build a console-based school attendance system in Java
 
 ## Session 1: Introduction and Orientation
 - Verified Java and Git setup.
@@ -12,3 +12,4 @@ This is a 10-part code-along project to build a console-based school attendance 
 1. Navigate to the project root directory (AttendanceSystem).
 2. Compile: javac src/com/school/Main.java
 3. Run: java -cp src com.school.Main
+
