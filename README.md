@@ -14,7 +14,6 @@ This is a 10-part code-along project to build a console-based school attendance 
 - Utilized arrays of objects in `Main.java` to manage and display multiple students and courses.
 - Introduced basic usage of `this` keyword.
 
-
 ### How to Run:
 1. Navigate to the project root directory (AttendanceSystem).
 2. Compile: javac src/com/school/Main.java
