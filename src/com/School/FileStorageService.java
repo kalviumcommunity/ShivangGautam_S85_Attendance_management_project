@@ -8,11 +8,7 @@ import java.util.List;
 public class FileStorageService {
 
     public void saveData(List<? extends Storable> items, String filename) {
-        // Using try-with-resources for automatic closing of PrintWriter/FileWriter
-        try (PrintWriter writer = new PrintWriter(new FileWriter(filename))) {  //List<? extends Storable> items → A list of objects that implement the Storable interface.
-                                                                                //✅ This ensures every object passed here knows how to convert itself into a string (via toDataString() method).
-
-                                                                                   // String filename → The name of the file where data will be stored.
+        try (PrintWriter writer = new PrintWriter(new FileWriter(filename))) {
             for (Storable item : items) {
                 writer.println(item.toDataString());
             }
@@ -21,8 +17,4 @@ public class FileStorageService {
             System.err.println("Error saving data to " + filename + ": " + e.getMessage());
         }
     }
-
-    // Loading data is more complex and will be discussed or tackled later.
-    // For example, a loadStudents(String filename) method would read lines,
-    // parse them, and create Student objects. This requires knowing the type.
 }

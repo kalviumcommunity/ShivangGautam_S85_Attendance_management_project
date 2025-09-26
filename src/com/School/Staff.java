@@ -1,16 +1,11 @@
 package com.school;
 
 public class Staff extends Person {
-    private String role; // e.g., "Librarian", "Administrator"
+    private String role;
 
     public Staff(String name, String role) {
-        super(name); // Calls Person constructor
+        super(name);
         this.role = role;
-    }
-
-    // Getter for role (optional for now)
-    public String getRole() {
-        return role;
     }
 
     @Override
