@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Main {
 
+    // ✅ Helper method to display any school directory
     public static void displaySchoolDirectory(List<Person> people) {
         System.out.println("\n--- School Directory ---");
         if (people.isEmpty()) {
@@ -19,10 +20,11 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("--- School Administration & Attendance System ---");
 
+        // --- Setup: People ---
         Student student1 = new Student("Alice Wonderland", "Grade 10");
         Student student2 = new Student("Bob The Builder", "Grade 9");
         Teacher teacher1 = new Teacher("Dr. Emily Carter", "Physics");
-        Staff staff1 = new Staff("Mr. John Davis", "Librarian");
+        Staff staff1   = new Staff("Mr. John Davis", "Librarian");
 
         List<Person> schoolPeople = new ArrayList<>();
         schoolPeople.add(student1);
@@ -32,8 +34,9 @@ public class Main {
 
         displaySchoolDirectory(schoolPeople);
 
-        Course course1 = new Course("Intro to Quantum Physics");
-        Course course2 = new Course("Advanced Algorithms");
+        // --- Setup: Courses ---
+        Course course1 = new Course("Intro to Quantum Physics");  // ID auto: C101
+        Course course2 = new Course("Advanced Algorithms");       // ID auto: C102
         List<Course> courses = new ArrayList<>();
         courses.add(course1);
         courses.add(course2);
@@ -43,16 +46,18 @@ public class Main {
             c.displayDetails();
         }
 
+        // --- Attendance Records ---
         List<AttendanceRecord> attendanceLog = new ArrayList<>();
         attendanceLog.add(new AttendanceRecord(student1, course1, "Present"));
         attendanceLog.add(new AttendanceRecord(student2, course1, "Absent"));
-        attendanceLog.add(new AttendanceRecord(student1, course2, "Daydreaming"));
+        attendanceLog.add(new AttendanceRecord(student1, course2, "Daydreaming")); // invalid status
 
         System.out.println("\n--- Attendance Log ---");
         for (AttendanceRecord ar : attendanceLog) {
             ar.displayRecord();
         }
 
+        // --- Saving Data ---
         System.out.println("\n--- Saving Data ---");
         FileStorageService storageService = new FileStorageService();
         storageService.saveData(List.of(student1, student2), "students.txt");
