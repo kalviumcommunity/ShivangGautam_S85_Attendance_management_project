@@ -1,2 +1,2 @@
-C101,Intro to Quantum Physics
-C102,Advanced Algorithms
+C101,Intro to Quantum Physics,2
+C102,Advanced Algorithms,1
