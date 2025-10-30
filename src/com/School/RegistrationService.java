@@ -20,7 +20,16 @@ public class RegistrationService {
     public void registerStudent(Student s) { students.add(s); }
     public void registerTeacher(Teacher t) { teachers.add(t); }
     public void registerStaff(Staff s) { staffMembers.add(s); }
+
+    // Keep old API that accepts a Course object
     public void createCourse(Course c) { courses.add(c); }
+
+    // New API: create course by name + capacity
+    public Course createCourse(String courseName, int capacity) {
+        Course c = new Course(courseName, capacity);
+        courses.add(c);
+        return c;
+    }
 
     public List<Student> getStudents() { return students; }
     public List<Teacher> getTeachers() { return teachers; }
@@ -34,7 +43,6 @@ public class RegistrationService {
                 .orElse(null);
     }
 
-    // Overload: find by int (keeps API requested) and by String id
     public Course findCourseById(int id) {
         String idStr = String.valueOf(id);
         Optional<Course> found = courses.stream()
@@ -56,6 +64,19 @@ public class RegistrationService {
         people.addAll(teachers);
         people.addAll(staffMembers);
         return people;
+    }
+
+    // Enroll a student in a course via Course.addStudent
+    public boolean enrollStudentInCourse(Student student, Course course) {
+        if (student == null || course == null) {
+            System.out.println("❌ Enrollment failed: student or course is null.");
+            return false;
+        }
+        boolean success = course.addStudent(student);
+        if (!success) {
+            System.out.println("ℹ️ Enrollment attempt failed for student ID: " + student.getId() + " in course " + course.getCourseName());
+        }
+        return success;
     }
 
     public void saveAllRegistrations() {
